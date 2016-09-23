@@ -4,7 +4,7 @@
 #
 Name     : apr-util
 Version  : 1.5.4
-Release  : 11
+Release  : 12
 URL      : http://www.apache.org/dist/apr/apr-util-1.5.4.tar.gz
 Source0  : http://www.apache.org/dist/apr/apr-util-1.5.4.tar.gz
 Summary  : Apache Portable Runtime Utility library

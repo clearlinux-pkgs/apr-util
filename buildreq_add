@@ -7,3 +7,4 @@ openssl-dev
 sqlite-autoconf-dev
 util-linux-dev
 expat-dev
+postgresql-dev

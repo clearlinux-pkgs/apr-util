@@ -2,5 +2,6 @@ libapr-1.so.0
 libc.so.6
 libcrypt.so.1
 libexpat.so.1
+libpq.so.5
 libpthread.so.0
 libsqlite3.so.0

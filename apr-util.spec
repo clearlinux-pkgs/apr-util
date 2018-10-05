@@ -4,7 +4,7 @@
 #
 Name     : apr-util
 Version  : 1.6.1
-Release  : 17
+Release  : 18
 URL      : http://www.apache.org/dist/apr/apr-util-1.6.1.tar.gz
 Source0  : http://www.apache.org/dist/apr/apr-util-1.6.1.tar.gz
 Summary  : Apache Portable Runtime Utility library
@@ -19,6 +19,7 @@ BuildRequires : buildreq-cmake
 BuildRequires : buildreq-configure
 BuildRequires : expat-dev
 BuildRequires : openssl-dev
+BuildRequires : postgresql-dev
 BuildRequires : sqlite-autoconf-dev
 BuildRequires : util-linux-dev
 
@@ -84,7 +85,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1538704764
+export SOURCE_DATE_EPOCH=1538705634
 %configure --disable-static --with-apr=/usr/bin/apr-1-config
 make  %{?_smp_mflags}
 
@@ -96,7 +97,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check
 
 %install
-export SOURCE_DATE_EPOCH=1538704764
+export SOURCE_DATE_EPOCH=1538705634
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/apr-util
 cp LICENSE %{buildroot}/usr/share/package-licenses/apr-util/LICENSE
@@ -123,6 +124,8 @@ cp NOTICE %{buildroot}/usr/share/package-licenses/apr-util/NOTICE
 
 %files lib
 %defattr(-,root,root,-)
+/usr/lib64/apr-util-1/apr_dbd_pgsql-1.so
+/usr/lib64/apr-util-1/apr_dbd_pgsql.so
 /usr/lib64/apr-util-1/apr_dbd_sqlite3-1.so
 /usr/lib64/apr-util-1/apr_dbd_sqlite3.so
 /usr/lib64/libaprutil-1.so.0

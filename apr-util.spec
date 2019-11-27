@@ -6,10 +6,10 @@
 #
 Name     : apr-util
 Version  : 1.6.1
-Release  : 19
+Release  : 20
 URL      : http://www.apache.org/dist/apr/apr-util-1.6.1.tar.gz
 Source0  : http://www.apache.org/dist/apr/apr-util-1.6.1.tar.gz
-Source99 : http://www.apache.org/dist/apr/apr-util-1.6.1.tar.gz.asc
+Source1 : http://www.apache.org/dist/apr/apr-util-1.6.1.tar.gz.asc
 Summary  : The Apache Portable Runtime
 Group    : Development/Tools
 License  : Apache-2.0 NCSA
@@ -21,7 +21,6 @@ BuildRequires : buildreq-cmake
 BuildRequires : buildreq-configure
 BuildRequires : expat-dev
 BuildRequires : openssl-dev
-BuildRequires : postgresql-dev
 BuildRequires : sqlite-autoconf-dev
 BuildRequires : util-linux-dev
 
@@ -47,6 +46,7 @@ Requires: apr-util-lib = %{version}-%{release}
 Requires: apr-util-bin = %{version}-%{release}
 Provides: apr-util-devel = %{version}-%{release}
 Requires: apr-util = %{version}-%{release}
+Requires: apr-util = %{version}-%{release}
 
 %description dev
 dev components for the apr-util package.
@@ -71,13 +71,16 @@ license components for the apr-util package.
 
 %prep
 %setup -q -n apr-util-1.6.1
+cd %{_builddir}/apr-util-1.6.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1557075154
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1574872420
+# -Werror is for werrorists
+export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -89,18 +92,18 @@ export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check
 
 %install
-export SOURCE_DATE_EPOCH=1557075154
+export SOURCE_DATE_EPOCH=1574872420
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/apr-util
-cp LICENSE %{buildroot}/usr/share/package-licenses/apr-util/LICENSE
-cp NOTICE %{buildroot}/usr/share/package-licenses/apr-util/NOTICE
+cp %{_builddir}/apr-util-1.6.1/LICENSE %{buildroot}/usr/share/package-licenses/apr-util/8cd04ee1fde0cfe74a78fae4153a693cc795cc5c
+cp %{_builddir}/apr-util-1.6.1/NOTICE %{buildroot}/usr/share/package-licenses/apr-util/189fac5323745cb6c6af3f18135059e2688f99ab
 %make_install
 
 %files
@@ -113,14 +116,46 @@ cp NOTICE %{buildroot}/usr/share/package-licenses/apr-util/NOTICE
 
 %files dev
 %defattr(-,root,root,-)
-/usr/include/*.h
+/usr/include/apr_anylock.h
+/usr/include/apr_base64.h
+/usr/include/apr_buckets.h
+/usr/include/apr_crypto.h
+/usr/include/apr_date.h
+/usr/include/apr_dbd.h
+/usr/include/apr_dbm.h
+/usr/include/apr_hooks.h
+/usr/include/apr_ldap.h
+/usr/include/apr_ldap_init.h
+/usr/include/apr_ldap_option.h
+/usr/include/apr_ldap_rebind.h
+/usr/include/apr_ldap_url.h
+/usr/include/apr_md4.h
+/usr/include/apr_md5.h
+/usr/include/apr_memcache.h
+/usr/include/apr_optional.h
+/usr/include/apr_optional_hooks.h
+/usr/include/apr_queue.h
+/usr/include/apr_redis.h
+/usr/include/apr_reslist.h
+/usr/include/apr_rmm.h
+/usr/include/apr_sdbm.h
+/usr/include/apr_sha1.h
+/usr/include/apr_siphash.h
+/usr/include/apr_strmatch.h
+/usr/include/apr_thread_pool.h
+/usr/include/apr_uri.h
+/usr/include/apr_uuid.h
+/usr/include/apr_xlate.h
+/usr/include/apr_xml.h
+/usr/include/apu.h
+/usr/include/apu_errno.h
+/usr/include/apu_version.h
+/usr/include/apu_want.h
 /usr/lib64/libaprutil-1.so
 /usr/lib64/pkgconfig/apr-util-1.pc
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/apr-util-1/apr_dbd_pgsql-1.so
-/usr/lib64/apr-util-1/apr_dbd_pgsql.so
 /usr/lib64/apr-util-1/apr_dbd_sqlite3-1.so
 /usr/lib64/apr-util-1/apr_dbd_sqlite3.so
 /usr/lib64/libaprutil-1.so.0
@@ -128,5 +163,5 @@ cp NOTICE %{buildroot}/usr/share/package-licenses/apr-util/NOTICE
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/apr-util/LICENSE
-/usr/share/package-licenses/apr-util/NOTICE
+/usr/share/package-licenses/apr-util/189fac5323745cb6c6af3f18135059e2688f99ab
+/usr/share/package-licenses/apr-util/8cd04ee1fde0cfe74a78fae4153a693cc795cc5c

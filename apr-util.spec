@@ -6,11 +6,11 @@
 #
 Name     : apr-util
 Version  : 1.6.1
-Release  : 20
+Release  : 21
 URL      : http://www.apache.org/dist/apr/apr-util-1.6.1.tar.gz
 Source0  : http://www.apache.org/dist/apr/apr-util-1.6.1.tar.gz
-Source1 : http://www.apache.org/dist/apr/apr-util-1.6.1.tar.gz.asc
-Summary  : The Apache Portable Runtime
+Source1  : http://www.apache.org/dist/apr/apr-util-1.6.1.tar.gz.asc
+Summary  : Apache Portable Runtime Utility library
 Group    : Development/Tools
 License  : Apache-2.0 NCSA
 Requires: apr-util-bin = %{version}-%{release}
@@ -46,7 +46,6 @@ Requires: apr-util-lib = %{version}-%{release}
 Requires: apr-util-bin = %{version}-%{release}
 Provides: apr-util-devel = %{version}-%{release}
 Requires: apr-util = %{version}-%{release}
-Requires: apr-util = %{version}-%{release}
 
 %description dev
 dev components for the apr-util package.
@@ -78,15 +77,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1574872420
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1605119950
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static --with-apr=/usr/bin/apr-1-config
 make  %{?_smp_mflags}
@@ -99,7 +97,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check
 
 %install
-export SOURCE_DATE_EPOCH=1574872420
+export SOURCE_DATE_EPOCH=1605119950
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/apr-util
 cp %{_builddir}/apr-util-1.6.1/LICENSE %{buildroot}/usr/share/package-licenses/apr-util/8cd04ee1fde0cfe74a78fae4153a693cc795cc5c

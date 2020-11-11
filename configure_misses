@@ -1,4 +1,3 @@
-Configure miss: sys/stat.h
 Configure miss: pg_config
 Configure miss: libpq-fe.h usability
 Configure miss: libpq-fe.h presence

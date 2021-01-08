@@ -1,0 +1,25 @@
+From 7d88c481a8188d844df8684c96c30891c77d1454 Mon Sep 17 00:00:00 2001
+From: Karthik Prabhu Vinod <karthik.prabhu.vinod@intel.com>
+Date: Fri, 8 Jan 2021 15:46:53 -0800
+Subject: [PATCH] Add Requires to apr-util on expat
+
+Signed-off-by: Karthik Prabhu Vinod <karthik.prabhu.vinod@intel.com>
+---
+ apr-util.pc.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/apr-util.pc.in b/apr-util.pc.in
+index 5b146af..9814a56 100644
+--- a/apr-util.pc.in
++++ b/apr-util.pc.in
+@@ -8,6 +8,6 @@ Name: APR Utils
+ Description: Companion library for APR
+ Version: @APRUTIL_DOTTED_VERSION@
+ # assume that apr-util requires libapr of same major version
+-Requires: apr-@APRUTIL_MAJOR_VERSION@
++Requires: apr-@APRUTIL_MAJOR_VERSION@ expat
+ Libs: -L${libdir} -l@APRUTIL_LIBNAME@ @LDADD_ldap@ @APRUTIL_EXPORT_LIBS@
+ Cflags: -I${includedir}
+-- 
+2.30.0
+

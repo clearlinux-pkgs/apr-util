@@ -6,7 +6,7 @@
 #
 Name     : apr-util
 Version  : 1.6.1
-Release  : 21
+Release  : 22
 URL      : http://www.apache.org/dist/apr/apr-util-1.6.1.tar.gz
 Source0  : http://www.apache.org/dist/apr/apr-util-1.6.1.tar.gz
 Source1  : http://www.apache.org/dist/apr/apr-util-1.6.1.tar.gz.asc
@@ -23,6 +23,7 @@ BuildRequires : expat-dev
 BuildRequires : openssl-dev
 BuildRequires : sqlite-autoconf-dev
 BuildRequires : util-linux-dev
+Patch1: 0001-Add-Requires-to-apr-util-on-expat.patch
 
 %description
 The mission of the Apache Portable Runtime (APR) is to provide a
@@ -71,13 +72,14 @@ license components for the apr-util package.
 %prep
 %setup -q -n apr-util-1.6.1
 cd %{_builddir}/apr-util-1.6.1
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1605119950
+export SOURCE_DATE_EPOCH=1610149805
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -97,7 +99,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check
 
 %install
-export SOURCE_DATE_EPOCH=1605119950
+export SOURCE_DATE_EPOCH=1610149805
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/apr-util
 cp %{_builddir}/apr-util-1.6.1/LICENSE %{buildroot}/usr/share/package-licenses/apr-util/8cd04ee1fde0cfe74a78fae4153a693cc795cc5c

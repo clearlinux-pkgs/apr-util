@@ -6,7 +6,7 @@
 #
 Name     : apr-util
 Version  : 1.6.1
-Release  : 22
+Release  : 23
 URL      : http://www.apache.org/dist/apr/apr-util-1.6.1.tar.gz
 Source0  : http://www.apache.org/dist/apr/apr-util-1.6.1.tar.gz
 Source1  : http://www.apache.org/dist/apr/apr-util-1.6.1.tar.gz.asc

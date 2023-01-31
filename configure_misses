@@ -1,19 +1,10 @@
-Configure miss: pg_config
-Configure miss: libpq-fe.h usability
-Configure miss: libpq-fe.h presence
-Configure miss: libpq-fe.h
-Configure miss: postgresql/libpq-fe.h usability
-Configure miss: postgresql/libpq-fe.h presence
-Configure miss: postgresql/libpq-fe.h
-Configure miss: sqlite.h usability
-Configure miss: sqlite.h presence
-Configure miss: sqlite.h
-Configure miss: odbc_config
-Configure miss: sql.h usability
-Configure miss: sql.h presence
-Configure miss: sql.h
-Configure miss: odbc/sql.h usability
-Configure miss: odbc/sql.h presence
-Configure miss: odbc/sql.h
+Configure miss: gcc options needed to detect all undeclared functions
 Configure miss: if system crypt() function is threadsafe
+Configure miss: libpq-fe.h
 Configure miss: memset_s support
+Configure miss: odbc/sql.h
+Configure miss: odbc_config
+Configure miss: pg_config
+Configure miss: postgresql/libpq-fe.h
+Configure miss: sql.h
+Configure miss: sqlite.h
